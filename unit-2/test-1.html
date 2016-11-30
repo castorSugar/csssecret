@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>半透明边框</title>
+  <style media="screen">
+    /*
+     * 相关规范
+     * http://w3.org/TR/css-backgrounds
+     */
+    body{background-color: #ccc;}
+    div{
+      width: 100px;
+      height: 100px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .border-box{
+      border: 10px solid hsla(0, 0%, 100%, .5);
+      background-color: white;
+    }
+    .padding-box{
+      border: 10px solid hsla(0, 0%, 100%, .5);
+      background-color: white;
+      background-clip: padding-box;
+    }
+    .centent-box{
+      border: 10px solid hsla(0, 0%, 100%, .5);
+      background-color: white;
+      background-clip: content-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="border-box"></div>
+  <div class="padding-box"></div>
+  <div class="centent-box"></div>
+</body>
+</html>

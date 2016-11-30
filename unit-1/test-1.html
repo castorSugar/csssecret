@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>尽量减少代码重复</title>
+</head>
+<body>
+  <style media="screen">
+    /*
+    * 当某些值相互依赖时， 应该把它们的相互关系用代码表达出来。
+    * 长度值都改成 em 单位，这样就依赖其父级的字号进行变化。
+    * 长度值都改成 rem 单位，这样就依赖浏览器的字号进行变化。（一般默认为16px）
+    * 把半透明的黑色或白色叠加在主色调上， 即可产生主色调的亮色和暗色变体。
+    * 只要覆盖 background-color 属性， 就可以得到不同颜色版本的按钮
+    */
+
+    button{
+      padding: .3rem .8rem;
+      border: 1px solid rgba(0,0,0,.1);
+      background: #58a linear-gradient(hsla(0,0%,100%,.2), transparent);
+      border-radius: .2rem;
+      box-shadow: 0 .05rem .25rem rgba(0,0,0,.5);
+      color: white;
+      text-shadow: 0 -.05rem .05rem rgba(0,0,0,.5);
+      font-size: 125%;
+      line-height: 1.5;
+    }
+
+    button.ok{
+			background-color: #6b0;
+		}
+
+		button.cancel{
+			background-color: #c00;
+		}
+  </style>
+</body>
+  <button>Yes!</button>
+  <button class="ok">Ok</button>
+	<button class="cancel">Cancel</button>
+</html>

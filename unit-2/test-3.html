@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>灵活的背景定位</title>
+  <style media="screen">
+     div{width: 100px; height: 100px; margin: 50px auto;}
+     /* background-position 属性已经得到扩展， 它允许我们指定背景图片距离任意角的偏移量， 只要我们在偏移量前面指定关键字 */
+     .one{background: url(bg-1.png) no-repeat #107BBD; background-position: right 20px bottom 10px;}
+     /* 回退方案--把老套的bottom right 定位值写进 background 的简写属性 */
+     .two{background: url(bg-1.png) no-repeat bottom right #107BBD; background-position: right 20px bottom 10px;}
+     /*
+      * 如果偏移量与容器的内边距一致情况下，让它自动地跟着我们设定的内边距走， 不用另外声明偏移量的值
+      * background-origin， 可以用它来改变矩形框。在默认情况下， 它的值是padding-box（ 内边距的外沿框）
+      * 把它的值改成 content-box（内容区的外沿框）， 在 background-position 属性中使用的边角关键字将会以内容区的边缘作为基准
+      */
+    .three{padding: 10px; background: url(bg-1.png) no-repeat #107BBD; background-position: right 10px bottom 10px;}
+    .four{padding: 10px; background: url(bg-1.png) no-repeat bottom right #107BBD; background-origin: content-box;}
+    /*
+     * 当容器元素的尺寸不固定时（ 因为内容往往是可变的），要把背景图片定位到距离底边 10px 且距离右边 20px 的位置
+     * 以左上角偏移的为起点,它有一个 100% - 20px 的水平偏移量， 以及 100% - 10px 的垂直偏移量
+     * 在 calc() 函数内部的 - 和 + 运算符的两侧各加一个空白符
+     */
+    .five{background: url(bg-1.png) no-repeat #107BBD; background-position: calc(100% - 20px) calc(100% - 10px);}
+  </style>
+</head>
+<body>
+  <div class="one"></div>
+  <div class="two"></div>
+  <div class="three"></div>
+  <div class="four"></div>
+  <div class="five"></div>
+</body>
+</html>

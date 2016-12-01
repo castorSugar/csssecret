@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>条纹背景</title>
+  <style media="screen">
+    div{width: 100px; height: 100px; margin: 20px auto;}
+    /* 把两个色标慢慢重合在一起 */
+    .one{background: linear-gradient(#fb3, #58a);}
+    .two{background: linear-gradient(#fb3 20%, #58a 80%);}
+    .three{background: linear-gradient(#fb3 40%, #58a 60%);}
+    .four{background: linear-gradient(#fb3 50%, #58a 50%);}
+    /* 创建等宽的条纹 */
+    .five{background: linear-gradient(#fb3 50%, #58a 50%); background-size: 100% 30px;}
+    /* 创建不等宽的条纹， 只需调整色标的位置值 */
+    .six{background: linear-gradient(#fb3 30%, #58a 30%); background-size: 100% 30px;}
+    /*
+     * 如果某个色标的位置值比整个列表中在它之前的色标的位置值都要小， 则该色标的位置值会被设置为它前面所有色标位置值的最大值
+     * 如果我们把第二个色标的位置值设置为 0， 那它的位置就总是会被浏览器调整为前一个色标的位置值
+     * 生成三种颜色的水平条纹
+     */
+    .seven{background: linear-gradient(#fb3 30%, #58a 0); background-size: 100% 30px;}
+    .eight{background: linear-gradient(#fb3 33.3%, #58a 0, #58a 66.6%, yellowgreen 0); background-size: 100% 45px}
+    /*
+     * 垂直条纹
+     * 指定渐变的方向
+     * 默认值 to bottom
+     * to right 或者 to left
+     */
+    .nine{background: linear-gradient(to right, /* 或 90deg */ #fb3 50%, #58a 0); background-size: 30px 100%;}
+    .ten{background: linear-gradient(to left, /* 或 -90deg */ #fb3 50%, #58a 0); background-size: 30px 100%;}
+    /*
+     * 斜向条纹
+     * 单个贴片包含了四条条纹，做到无缝拼接
+     * 对于一个 45°的直角三角形来说， 它的两条直角边a是等长的， 因此它的斜边会变成√2*a
+     * 想让条纹的宽度变化为我们原本想要的 15px
+     * 就需要把 background-size 指定为 2 * 15 * √2 = 30 * √2 ≈ 42.426406871px = 42px
+     * 循环式的加强版： repeating-linear-gradient() 和 repeating-radial-gradient()
+     * 色标是无限循环重复的， 直到填满整个背景
+     * 在渐变的色标中指定长度
+     */
+    .eleven{background: linear-gradient(45deg, #fb3 50%, #58a 0); background-size: 30px 30px;}
+    .twelve{background: linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0); background-size: 30px 30px;}
+    .thirteen{background: linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0); background-size: 42px 42px;}
+    .fourteen{background: repeating-linear-gradient(45deg, #fb3, #fb3 15px, #58a 0, #58a 30px);}
+    .fifteen{background: repeating-linear-gradient(45deg, #fb3 0, #fb3 25%, #58a 0, #58a 50%); background-size: 42.426406871px 42.426406871px;}
+    /*
+     * 灵活的同色系条纹
+     * 把最深的颜色指定为背景色， 同时把半透明白色的条纹叠加在背景色之上来得到浅色条纹
+     */
+    .sixteen{background: repeating-linear-gradient(30deg, #79b, #79b 15px, #58a 0, #58a 30px);}
+    .seventeen{background: #58a; background-image: repeating-linear-gradient(30deg, hsla(0,0%,100%,.1), hsla(0,0%,100%,.1) 15px, transparent 0, transparent 30px);}
+  </style>
+</head>
+<body>
+  <div class="one"></div>
+  <div class="two"></div>
+  <div class="three"></div>
+  <div class="four"></div>
+  <div class="five"></div>
+  <div class="six"></div>
+  <div class="seven"></div>
+  <div class="eight"></div>
+  <div class="nine"></div>
+  <div class="ten"></div>
+  <div class="eleven"></div>
+  <div class="twelve"></div>
+  <div class="thirteen"></div>
+  <div class="fourteen"></div>
+  <div class="fifteen"></div>
+  <div class="sixteen"></div>
+  <div class="seventeen"></div>
+</body>
+</html>

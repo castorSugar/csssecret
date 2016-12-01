@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>多重边框</title>
+  <style media="screen">
+    /*
+     * CSS 背景与边框 http://w3.org/TR/css-backgrounds
+     * CSS 基本 UI 特性 http://w3.org/TR/css3-ui
+     */
+    /*
+     * box-shadow: x轴偏移量 y轴偏移量 模糊值 扩张半径
+     * 它不会影响布局， 而且也不会受到 box-sizing 属性的影响
+     * 它们并不会响应鼠标事件， 比如悬停或点击
+     */
+    div{width: 100px; height: 100px; margin: 50px auto; background-color: yellowgreen}
+    /* 一个正值的扩张半径加上两个为零的偏移量以及为零的模糊值， 得到的“投影”其实就像一道实线边框 */
+    .one{box-shadow: 0 0 0 10px #655;}
+    /* 支持逗号分隔语法， 我们可以创建任意数量的投影 */
+    .two{box-shadow: 0 0 0 10px #655, 0 0 0 15px deeppink;}
+    /* box-shadow 是层层叠加的， 第一层投影位于最顶层， 依次类推。 */
+    .three{box-shadow: 0 0 0 10px #655, 0 0 0 15px deeppink, 0 2px 5px 15px rgba(0,0,0,.6);}
+    /*
+     * outline
+     * outline 并不能接受用逗号分隔的多个值，只适用于双层“边框”
+     * 边框不一定会贴合 border-radius 属性产生的圆角
+     */
+    .four{border: 10px solid #655; outline: 5px solid deeppink;}
+    .five{border: 10px solid #655; border-radius: 5px; outline: 5px solid deeppink;}
+  </style>
+</head>
+<body>
+  <div class="one"></div>
+  <div class="two"></div>
+  <div class="three"></div>
+  <div class="four"></div>
+  <div class="five"></div>
+</body>
+</html>

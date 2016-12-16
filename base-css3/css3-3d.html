@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3D CSS3</title>
+  <style media="screen">
+    .space{perspective: 800; perspective-origin: 50% 50%; overflow: hidden;}
+    .pages{position: relative; width: 400px; height: 400px; margin: 0 auto; transform-style: preserve-3d;}
+    .page{position: absolute; width: 360px; height: 360px; padding: 20px; background-color: #000; color: #fff; font: 360px/360px bold; text-align: center; transform-origin: bottom; transition: transform 1s linear;}
+    #page-1{transform: rotateX(0);}
+    #page-2,#page-3,#page-4,#page-5,#page-6{transform: rotateX(90deg);}
+    .ctrl{margin: 40px auto; text-align: center;}
+  </style>
+  <link rel="stylesheet" href="/css/master.css">
+</head>
+<body>
+  <div class="space">
+    <div class="pages">
+      <div class="page" id="page-1">1</div>
+      <div class="page" id="page-2">2</div>
+      <div class="page" id="page-3">3</div>
+      <div class="page" id="page-4">4</div>
+      <div class="page" id="page-5">5</div>
+      <div class="page" id="page-6">6</div>
+    </div>
+  </div>
+  <div class="ctrl">
+    <a href="javascript:;">&lt;&lt;</a>
+    <a href="javascript:;">&gt;&gt;</a>
+  </div>
+  <script type="text/javascript">
+    window.onload = function () {
+      var btnPrev = document.querySelectorAll('a')[0];
+      var btnNext = document.querySelectorAll('a')[1];
+      var pages = document.querySelectorAll('.page');
+      var len = pages.length;
+      var curIndex = 1;
+
+      btnNext.onclick = next;
+      btnPrev.onclick = prev;
+
+      function next() {
+        var curPage = document.getElementById('page-'+curIndex);
+        curPage.style.transform = 'rotateX(-90deg)';
+
+        if (curIndex > len - 1) {
+          for (var i = 0; i < len; i++) {
+            pages[i].style.transform = 'rotateX(90deg)'
+          }
+          curIndex = 1;
+        } else {
+          curIndex++;
+        }
+
+        var nextPage = document.getElementById('page-'+curIndex);
+        nextPage.style.transform = 'rotateX(0deg)';
+
+      }
+
+      function prev() {
+        var curPage = document.getElementById('page-'+curIndex);
+        curPage.style.transform = 'rotateX(90deg)';
+
+        if (curIndex < 2) {
+          for (var i = 0; i < len; i++) {
+            pages[i].style.transform = 'rotateX(-90deg)'
+          }
+          curIndex = len;
+        } else {
+          curIndex--;
+        }
+
+        var prevPage = document.getElementById('page-'+curIndex);
+        prevPage.style.transform = 'rotateX(0deg)';
+      }
+    }
+  </script>
+</body>
+</html>
